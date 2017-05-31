@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="BiaGlicMonitorXa.CadastroPage">
+	<ContentPage.Content>
+
+    <StackLayout
+            Padding="0,20,0,0">
+
+        <Entry 
+            x:Name="CadastroEdtId"
+            Placeholder="UUID"/>
+                
+        <Entry 
+            x:Name="CadastroEdtNome"
+            Placeholder="nome ou apelido"/>
+
+        <Entry 
+            x:Name="CadastroEdtEmail"
+            Placeholder="E-mail"/>
+
+        <Entry 
+            x:Name="CadastroEdtTelefone"
+            Placeholder="Telefone"/>
+
+            <Button
+                x:Name="CadastroBtnGravar"
+                Text="Gravar"/>
+        </StackLayout>
+            
+        
+	</ContentPage.Content>
+</ContentPage>

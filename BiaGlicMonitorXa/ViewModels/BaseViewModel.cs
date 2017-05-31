@@ -41,12 +41,12 @@ namespace BiaGlicMonitorXa.ViewModels
 
 			var page = Activator.CreateInstance(viewType) as Page;
 
-			if (viewModelType.GetTypeInfo().DeclaredConstructors.Any(c => c.GetParameters().Any(p => p.ParameterType == typeof(IMonkeyHubApiService))))
+			if (viewModelType.GetTypeInfo().DeclaredConstructors.Any(c => c.GetParameters().Any(p => p.ParameterType == typeof(IApiService))))
 			{
 				var argsList = args.ToList();
-				var monkeyHubApiService = DependencyService.Get<IMonkeyHubApiService>();
-				argsList.Insert(0, monkeyHubApiService);
-				args = argsList.ToArray();
+				var oApiService = DependencyService.Get<IApiService>();
+				argsList.Insert(0, oApiService);
+                args = argsList.ToArray();
 			}
 
 			var viewModel = Activator.CreateInstance(viewModelType, args);

@@ -4,10 +4,9 @@ using BiaGlicMonitorXa.Models;
 
 namespace BiaGlicMonitorXa.Services
 {
-	public interface IMonkeyHubApiService
+	public interface IApiService
 	{
-		Task<List<Content>> GetContentsByTagIdAsync(string tagId);
-		Task<List<Tag>> GetTagsAsync();
-		Task<List<Content>> GetContentsByFilterAsync(string filter);
+        Task<List<Usuario>> GetUsuariosAsync();
+        Task<List<Medicao>> GetMedicaoAsync(string pUsuarioId);
 	}
 }

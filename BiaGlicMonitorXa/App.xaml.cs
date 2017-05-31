@@ -8,7 +8,7 @@ namespace BiaGlicMonitorXa
         {
             InitializeComponent();
 
-            MainPage = new BiaGlicMonitorXaPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

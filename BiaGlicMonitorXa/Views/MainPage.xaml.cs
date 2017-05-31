@@ -2,9 +2,9 @@
 
 namespace BiaGlicMonitorXa
 {
-    public partial class BiaGlicMonitorXaPage : ContentPage
+    public partial class MainPage : ContentPage
     {
-        public BiaGlicMonitorXaPage()
+        public MainPage()
         {
             InitializeComponent();
         }
