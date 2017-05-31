@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:local="clr-namespace:BiaGlicMonitorXa" 
-    x:Class="BiaGlicMonitorXa.MainPage">
+    x:Class="BiaGlicMonitorXa.MenuPrincipalPage">
 
     <StackLayout
         Padding="0,20,0,0">
