@@ -2,7 +2,9 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="BiaGlicMonitorXa.AddMedicaoPage">
+    xmlns:base="clr-namespace:BiaGlicMonitorXa;assembly=BiaGlicMonitorXa"
+    x:Class="BiaGlicMonitorXa.AddMedicaoPage"
+    Title="Adicionar Medição">
 	<ContentPage.Content>
 
 
@@ -12,11 +14,14 @@
 
     <Entry
             x:Name="AddMedicaoEdtTaxa"
-            Placeholder="Informe a taxa atual"/>
+            Placeholder="Informe a taxa atual"
+            Text="{Binding Valor, Mode=TwoWay}"
+            Keyboard="Numeric"/>
 
        <Button
             x:Name="AddMedicaoBtnGravar"
-            Text="Gravar"/>        
+            Text="Gravar"
+            Command="{Binding GravarCommand}"/>        
         
 
         </StackLayout>

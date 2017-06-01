@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage 
+<base:BasePage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:local="clr-namespace:BiaGlicMonitorXa" 
+    xmlns:base="clr-namespace:BiaGlicMonitorXa;assembly=BiaGlicMonitorXa"
     x:Class="BiaGlicMonitorXa.MenuPrincipalPage">
 
     <StackLayout
@@ -10,15 +10,18 @@
 
          <Button
             x:Name="MainBtnAdd"
-            Text="Adicionar Medição"/>
+            Text="Adicionar Medição"
+            Command="{Binding AddMedicaoCommand}"/>
 
          <Button
             x:Name="MainBtnMinhasMedicoes"
-            Text="Minhas Medições"/>
+            Text="Minhas Medições"
+            Command="{Binding AcompDetalheCommand}"/>
         
          <Button
             x:Name="MainBtnAcompanhar"
-            Text="Acompanhar"/>
+            Text="Acompanhar"
+            Command="{Binding AcompCommand}"/>
 
          <Button
             x:Name="MainBtnCompartilhar"
@@ -34,4 +37,4 @@
 
     </StackLayout>
     
-</ContentPage>
+</base:BasePage>

@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="BiaGlicMonitorXa.AcompPage">
+<base:BasePage  
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:base="clr-namespace:BiaGlicMonitorXa;assembly=BiaGlicMonitorXa"
+    x:Class="BiaGlicMonitorXa.AcompPage">
 	<ContentPage.Content>
-
         <StackLayout
             Padding="0,20,0,0">
 
-        <ListView x:Name="AcompRcvLista">
-
-
+            <ListView x:Name="AcompRcvLista"
+                    ItemsSource="{Binding usuarios}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nome}" Detail="{Binding UltimaMedicao.Valor}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
 
+            
         </StackLayout>
-        
 	</ContentPage.Content>
-</ContentPage>
+</base:BasePage >

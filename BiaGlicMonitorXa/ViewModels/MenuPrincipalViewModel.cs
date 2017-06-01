@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using BiaGlicMonitorXa.Services;
+﻿using BiaGlicMonitorXa.Services;
 using Xamarin.Forms;
 
 namespace BiaGlicMonitorXa.ViewModels
@@ -27,23 +24,31 @@ namespace BiaGlicMonitorXa.ViewModels
             AcompCommand = new Command(ExecuteAcompCommand);
             AddMedicaoCommand = new Command(ExecuteAddMedicaoCommand);
 			CadastroCommand = new Command(ExecuteCadastroCommand);
-			ConfigCommand = new Command(ExecuteConfigCommand);
+            ConfigCommand = new Command(ExecuteConfigCommand);
+
+            Title = "GlicMonitor";
 			
 		}
 
 		private async void ExecuteAcompDetalheCommand()
 		{
-			//await PushAsync<AcompDetalheViewModel>();
+            await PushAsync<AcompDetalheViewModel>(_ApiService.GetUsuarioLogado());
 		}
 
 		private async void ExecuteAddMedicaoCommand()
 		{
-			//await PushAsync<AddMedicaoViewModel>();
+            await PushAsync<AddMedicaoViewModel>();
 		}
 
 		private async void ExecuteAcompCommand()
 		{
-			//await PushAsync<AcompViewModel>();
+
+            //var page = new AcompPage();
+            //var viewmodel = new AcompViewModel(_ApiService);
+            //page.BindingContext = viewmodel;
+            //await Application.Current.MainPage.Navigation.PushAsync(page);
+
+			await PushAsync<AcompViewModel>();
 		}
 
 		private async void ExecuteCadastroCommand()

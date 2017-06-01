@@ -10,8 +10,18 @@ using Xamarin.Forms;
 
 namespace BiaGlicMonitorXa.ViewModels
 {
+    /// <summary>
+    /// Classe criada pelo pessoal do monkey nigths
+    /// </summary>
 	public class BaseViewModel : INotifyPropertyChanged
 	{
+		private string _title;
+		public string Title
+		{
+			get { return _title; }
+			set { SetProperty(ref _title, value); }
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -44,9 +54,9 @@ namespace BiaGlicMonitorXa.ViewModels
 			if (viewModelType.GetTypeInfo().DeclaredConstructors.Any(c => c.GetParameters().Any(p => p.ParameterType == typeof(IApiService))))
 			{
 				var argsList = args.ToList();
-				var oApiService = DependencyService.Get<IApiService>();
-				argsList.Insert(0, oApiService);
-                args = argsList.ToArray();
+				var monkeyHubApiService = DependencyService.Get<IApiService>();
+				argsList.Insert(0, monkeyHubApiService);
+				args = argsList.ToArray();
 			}
 
 			var viewModel = Activator.CreateInstance(viewModelType, args);
@@ -56,6 +66,11 @@ namespace BiaGlicMonitorXa.ViewModels
 			}
 
 			await Application.Current.MainPage.Navigation.PushAsync(page);
+		}
+
+		public virtual Task LoadAsync()
+		{
+			return Task.FromResult(0);
 		}
 
 		public async Task DisplayAlert(string title, string message, string cancel)

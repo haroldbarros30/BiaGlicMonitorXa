@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace BiaGlicMonitorXa
 {
-    public partial class MenuPrincipalPage : ContentPage
+    public partial class MenuPrincipalPage : BasePage
     {
         private MenuPrincipalViewModel ViewModel => BindingContext as MenuPrincipalViewModel;
 

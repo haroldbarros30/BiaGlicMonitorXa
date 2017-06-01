@@ -76,6 +76,10 @@
       <DependentUpon>AcompPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MenuPrincipalViewModel.cs" />
+    <Compile Include="ViewModels\AddMedicaoViewModel.cs" />
+    <Compile Include="ViewModels\AcompDetalheViewModel.cs" />
+    <Compile Include="Views\BasePage.cs" />
+    <Compile Include="ViewModels\AcompViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
