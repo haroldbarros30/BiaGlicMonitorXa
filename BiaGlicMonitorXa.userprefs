@@ -1,6 +1,10 @@
 ﻿<Properties StartupConfiguration="{56982D22-88BB-4A64-BB7D-62FB29817C61}|Default">
   <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.Droid PreferredExecutionTarget="Android.AVD_for_Galaxy_Nexus_by_Google" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Status do BiaGlicMonitorXa">
+    <Files>
+      <File FileName="Status do BiaGlicMonitorXa" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
