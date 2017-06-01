@@ -1,0 +1,11 @@
+﻿<Properties StartupConfiguration="{56982D22-88BB-4A64-BB7D-62FB29817C61}|Default">
+  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.Droid PreferredExecutionTarget="Android.AVD_for_Galaxy_Nexus_by_Google" />
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.D5575221-3428-4D3A-B9F3-4F31F72BA9E3" />
+</Properties>
