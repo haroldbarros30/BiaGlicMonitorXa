@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace BiaGlicMonitorXa
 {
-    public partial class AddMedicaoPage : ContentPage
+    public partial class AddMedicaoPage : BasePage
     {
 		private AddMedicaoViewModel ViewModel => BindingContext as AddMedicaoViewModel;
 

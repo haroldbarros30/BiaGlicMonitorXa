@@ -8,197 +8,177 @@ using BiaGlicMonitorXa.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.Linq;
+using Microsoft.WindowsAzure.MobileServices;
 
 [assembly: Dependency(typeof(BiaGlicMonitorXa.Services.ApiService))]
 namespace BiaGlicMonitorXa.Services
 {
-	public class ApiService : IApiService
-	{
-		//private const string BaseUrl = "https://monkey-hub-api.azurewebsites.net/api/";
+    public class ApiService : IApiService
+    {
 
-		private static Usuario usuarioLogado = new Usuario()
-															{
-																Id = "UUID00",
-																Nome = "Beatriz",
-																Email = "beatriz@teste.com.br",
-																Telefone = ""
-															};
+        public static readonly string AppUrl = "https://biaglicmonitor.azurewebsites.net";
 
 
 
+		List<AppServiceIdentity> identities = null;
 
+		public MobileServiceClient Client { get; set; } = null;
+        IMobileServiceTable<Usuario> UsuarioTable;
+        IMobileServiceTable<Medicao> MedicaoTable;
+		
 
-        private static List<Usuario> usuarios;
+        public ApiService()
+        {
+            //cria o MobileService do azure
+            Client = new MobileServiceClient(AppUrl);
 
-		public async Task<List<Usuario>> GetUsuariosAsync()
-		{/*
-			var httpClient = new HttpClient();
-			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //Cria a tabela de usuarios
+            UsuarioTable = Client.GetTable<Usuario>();
 
-			var response = await httpClient.GetAsync($"{BaseUrl}Usuario").ConfigureAwait(false);
+            //cria a tabela de medicao
+            MedicaoTable = Client.GetTable<Medicao>();
+        }
 
-			if (response.IsSuccessStatusCode)
-			{
-				using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-				{
-					return JsonConvert.DeserializeObject<List<Usuario>>(
-						await new StreamReader(responseStream)
-							.ReadToEndAsync().ConfigureAwait(false));
-				}
-			}
+        /// <summary>
+        /// Realiza o login com o facebook
+        /// </summary>
+        /// <returns>The async.</returns>
+        public async Task<Boolean> LoginAsync()
+        {
+            var auth = DependencyService.Get<IAuthenticate>();
+            var user = await auth.Authenticate(Client, MobileServiceAuthenticationProvider.Facebook);
 
-			return null;
-			*/
+            Settings.AuthToken = string.Empty;
+            Settings.UserId = string.Empty;
 
-            //alimenta os dados de forma estatica enquanto em desenvolvimento
-            if (usuarios == null)
+            if (user == null)
             {
-				usuarios = new List<Usuario>();
-
-
-                Usuario usuario1 = new Usuario()
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    Id = "UUID00",
-                    Nome = "Beatriz",
-                    Email = "beatriz@teste.com.br",
-                    Telefone = ""
-                };
+                    await App.Current.MainPage.DisplayAlert("Erro", "Nao conseguimos efetuar o login, tente novamente", "OK");
+                });
 
-                usuarioLogado = usuario1;
+                return false;
 
-                Medicao medicao1 = new Medicao()
-                {
-                    Id = "001",
-                    Data = "20170101",
-                    Hora = "12:00:00",
-                    Valor = 100
-                };
+            }
+            else
+            {
+                //Obs: Exemplo copiado da seguinte fonte: https://github.com/rubgithub/JogoDaVelhaMaratonaXamarin/blob/master/JogoDaVelhaMaratona/JogoDaVelhaMaratona/Service/AzureService.cs
+
+                identities = await Client.InvokeApiAsync<List<AppServiceIdentity>>("/.auth/me");
 
 
-				Medicao medicao2 = new Medicao()
-				{
-					Id = "002",
-					Data = "20170101",
-					Hora = "12:00:02",
-					Valor = 200
-				};
 
-				Medicao medicao3 = new Medicao()
-				{
-					Id = "003",
-					Data = "20170101",
-					Hora = "12:00:03",
-					Valor = 300
-				};
+                //guarda os dados do usuario localizado
+                Settings.UserName = identities[0].UserClaims.Find(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")).Value;
+                Settings.UserEmail = identities[0].UserClaims.Find(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")).Value;
 
+                /* Algumas outras opcoes possiveis para recuperar dados do facebook
 
-				Medicao medicao4 = new Medicao()
-				{
-					Id = "004",
-					Data = "20170104",
-					Hora = "12:00:00",
-					Valor = 400
-				};
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname"
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname"
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/gender"
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"
 
-				Medicao medicao5 = new Medicao()
-				{
-					Id = "005",
-					Data = "20170105",
-					Hora = "12:00:00",
-					Valor = 500
-				};
+                 */
 
-                usuario1.Medicoes = new List<Medicao>();
-                usuario1.Medicoes.Add(medicao1);
-                usuario1.Medicoes.Add(medicao2);
-                usuario1.Medicoes.Add(medicao3);
-                usuario1.Medicoes.Add(medicao4);
-                usuario1.Medicoes.Add(medicao5);
-
-				Usuario usuario2 = new Usuario()
-                {
-                    Id = "UUID01",
-                    Nome = "Paulo",
-                    Email = "Paulo@teste.com.br",
-                    Telefone = ""
-                };
-
-				usuario2.Medicoes = new List<Medicao>();
-				usuario2.Medicoes.Add(medicao1);
-				usuario2.Medicoes.Add(medicao2);
-				usuario2.Medicoes.Add(medicao3);
-
-                Usuario usuario3 =  new Usuario() 
-                { 
-                    Id = "UUID02",
-                    Nome = "Pedro", 
-                    Email = "pedro@teste.com.br", 
-                    Telefone = "" 
-                };
-
-				usuario3.Medicoes = new List<Medicao>();
-				usuario3.Medicoes.Add(medicao4);
-				usuario3.Medicoes.Add(medicao5);
-
-                usuarios.Add(usuario1);
-                usuarios.Add(usuario2);
-                usuarios.Add(usuario3);
-
-			}
+                Settings.AuthToken = user.MobileServiceAuthenticationToken;
+                Settings.UserId = user.UserId;
+                Settings.AccessToken = identities[0].AccessToken;
 
 
-            return usuarios;
+                //busca a foto do usuario
+                var requestUrl = $"https://graph.facebook.com/v2.9/me/?fields=picture.width(350).height(350)&access_token={Settings.AccessToken}";
+                var httpClient = new HttpClient();
+                var userJson = await httpClient.GetStringAsync(requestUrl);
+                var facebookProfile = JsonConvert.DeserializeObject<FacebookProfile>(userJson);
+                Settings.UserImageUrl = facebookProfile.Picture.Data.Url;
+
+            }
+
+            return true;
+
+        }
+
+        /// <summary>
+        /// Retorna a lista de usuarios cadastrados
+        /// </summary>
+        /// <returns>The usuarios async.</returns>
+        public async Task<List<Usuario>> GetUsuariosAsync()
+        {
+            IEnumerable<Usuario> usuarios = await UsuarioTable.ToEnumerableAsync();
+			return new List<Usuario>(usuarios);
+        }
+
+
+        /// <summary>
+        /// Retora se um determinado ID de usuario existe
+        /// </summary>
+        /// <returns>The usuario exists async.</returns>
+        /// <param name="pUsuarioId">P usuario identifier.</param>
+        public async Task<Boolean> GetUsuarioExistsAsync(string pUsuarioId)
+		{
+            var usuarios = await UsuarioTable.Where(u => u.Id == pUsuarioId).ToEnumerableAsync();
+            return (usuarios != null && usuarios.Count() > 0);
+
 		}
 
+
+        /// <summary>
+        /// Adiciona um novo usuario
+        /// </summary>
+        /// <returns>The usuario async.</returns>
+        /// <param name="pUsuario">P usuario.</param>
+        public async Task AddUsuarioAsync(Usuario pUsuario)
+        {
+            if (await GetUsuarioExistsAsync(pUsuario.Id))
+                await this.UsuarioTable.UpdateAsync(pUsuario);
+            else
+                await this.UsuarioTable.InsertAsync(pUsuario);
+        }
+
+        /// <summary>
+        /// Adiciona uma medicao
+        /// </summary>
+        /// <returns>The medicao.</returns>
+        /// <param name="pMedicao">P medicao.</param>
         public async Task AddMedicao(Medicao pMedicao)
         {
-            usuarioLogado.Medicoes.Add(pMedicao);
+            await this.MedicaoTable.InsertAsync(pMedicao);
         }
 
+
+        /// <summary>
+        /// Retorna as medicoes realizadas de um determinado usuario
+        /// </summary>
+        /// <returns>The medicao async.</returns>
+        /// <param name="pUsuarioId">P usuario identifier.</param>
 		public async Task<List<Medicao>> GetMedicaoAsync(string pUsuarioId)
 		{
-            /*
-			var httpClient = new HttpClient();
-			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-			var response = await httpClient.GetAsync($"{BaseUrl}Usuario/Medicao?usuario={pUsuarioId}").ConfigureAwait(false);
+            IEnumerable<Medicao> medicoes = await MedicaoTable
+                .Where(medicao => medicao.UsuarioId == pUsuarioId)
+			    .ToEnumerableAsync();
 
-			if (response.IsSuccessStatusCode)
-			{
-				using (var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-				{
-					return JsonConvert.DeserializeObject<List<Medicao>>(
-						await new StreamReader(responseStream)
-							.ReadToEndAsync().ConfigureAwait(false));
-				}
-			}
-
-			return null;
-			*/
-
-
-            if (usuarios == null)
-            {
-                await GetUsuariosAsync();
-            }
-
-            if (usuarios == null)
-                return null;
-
-
-            foreach (var item in usuarios)
-            {
-                if (item.Id.Equals(pUsuarioId))
-                    return item.Medicoes;
-            }
-
-            return null;
-
-
+			return new List<Medicao>(medicoes);
+  
         }
 
+
+
+        /// <summary>
+        /// Retorna com o usuario logado
+        /// </summary>
+        /// <returns>The usuario logado.</returns>
         public Usuario GetUsuarioLogado()
         {
+            Usuario usuarioLogado = new Usuario();
+            usuarioLogado.Id = Settings.UserId;
+            usuarioLogado.Nome = Settings.UserName;
+            usuarioLogado.Email = Settings.UserEmail;
+            usuarioLogado.Telefone = Settings.UserPhone;
             return usuarioLogado;
         }
     }

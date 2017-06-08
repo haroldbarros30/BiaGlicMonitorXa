@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace BiaGlicMonitorXa
 {
-    public partial class CadastroPage : ContentPage
+    public partial class CadastroPage : BasePage
     {
         public CadastroPage()
         {

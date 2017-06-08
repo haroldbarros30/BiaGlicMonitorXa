@@ -23,17 +23,11 @@
             Text="Acompanhar"
             Command="{Binding AcompCommand}"/>
 
-         <Button
-            x:Name="MainBtnCompartilhar"
-            Text="Compartilhar"/>
 
          <Button
             x:Name="MainBtnCadastro"
-            Text="Cadastro"/>
-
-         <Button
-            x:Name="MainBtnConfigurar"
-            Text="Configurações"/>
+            Text="Login/Cadastro"
+            Command="{Binding CadastroCommand}"/>
 
     </StackLayout>
     

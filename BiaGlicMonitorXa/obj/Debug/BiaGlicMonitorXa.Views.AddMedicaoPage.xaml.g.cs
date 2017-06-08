@@ -12,7 +12,7 @@ namespace BiaGlicMonitorXa {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/Views/AddMedicaoPage.xaml")]
-    public partial class AddMedicaoPage : global::Xamarin.Forms.ContentPage {
+    public partial class AddMedicaoPage : global::BiaGlicMonitorXa.BasePage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Entry AddMedicaoEdtTaxa;

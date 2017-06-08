@@ -24,13 +24,7 @@ namespace BiaGlicMonitorXa {
         private global::Xamarin.Forms.Button MainBtnAcompanhar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button MainBtnCompartilhar;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Button MainBtnCadastro;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button MainBtnConfigurar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
@@ -38,9 +32,7 @@ namespace BiaGlicMonitorXa {
             MainBtnAdd = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "MainBtnAdd");
             MainBtnMinhasMedicoes = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "MainBtnMinhasMedicoes");
             MainBtnAcompanhar = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "MainBtnAcompanhar");
-            MainBtnCompartilhar = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "MainBtnCompartilhar");
             MainBtnCadastro = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "MainBtnCadastro");
-            MainBtnConfigurar = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "MainBtnConfigurar");
         }
     }
 }

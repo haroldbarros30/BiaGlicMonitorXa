@@ -1,34 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<base:BasePage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:base="clr-namespace:BiaGlicMonitorXa;assembly=BiaGlicMonitorXa"
     x:Class="BiaGlicMonitorXa.CadastroPage">
 	<ContentPage.Content>
 
     <StackLayout
-            Padding="0,20,0,0">
+            Padding="10,20,10,0">
+
+        <Button x:Name="LoginButton"
+                Text="Logar com facebook"
+                BackgroundColor="Blue"
+                FontSize="Medium"
+                TextColor="White"
+                 Command="{Binding LoginFaceBookCommand}"/>
 
         <Entry 
             x:Name="CadastroEdtId"
-            Placeholder="UUID"/>
+            Placeholder="UUID"
+            Text="{Binding Id, Mode=TwoWay}"
+            IsEnabled="false"/>
                 
         <Entry 
             x:Name="CadastroEdtNome"
-            Placeholder="nome ou apelido"/>
+            Placeholder="nome ou apelido"
+            Text="{Binding Nome, Mode=TwoWay}"/>
 
         <Entry 
             x:Name="CadastroEdtEmail"
-            Placeholder="E-mail"/>
+            Placeholder="E-mail"
+            Text="{Binding Email, Mode=TwoWay}"/>
 
         <Entry 
             x:Name="CadastroEdtTelefone"
-            Placeholder="Telefone"/>
+            Placeholder="Telefone"
+            Text="{Binding Telefone, Mode=TwoWay}"/>
 
-            <Button
-                x:Name="CadastroBtnGravar"
-                Text="Gravar"/>
-        </StackLayout>
+        <Button
+            x:Name="CadastroBtnGravar"
+            Text="Gravar"
+            Command="{Binding GravarCommand}"/>
+
+
+        <Label 
+                x:Name="InfoLabel"
+                Text="{Binding Info}"
+                HorizontalTextAlignment="Center"/>
+
+        <Image 
+                Source="{Binding Foto}"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                Aspect="AspectFill"
+                MinimumWidthRequest="100"
+                MinimumHeightRequest="100"/>
             
-        
+        </StackLayout>
+
 	</ContentPage.Content>
-</ContentPage>
+</base:BasePage >

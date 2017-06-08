@@ -32,6 +32,10 @@ namespace BiaGlicMonitorXa.ViewModels
 				usuarios.Clear();
 				foreach (var usuario in oUsuarios)
 				{
+
+                    //pega as medicoes do usuario
+                    usuario.Medicoes = await _ApiService.GetMedicaoAsync(usuario.Id);
+
 					usuarios.Add(usuario);
 				}
 

@@ -15,7 +15,7 @@
 	10.3 \
 	--targetver \
 	8.0 \
-	--http-message-handler=HttpClientHandler \
+	--http-message-handler=NSUrlSessionHandler \
 	--abi=x86_64 \
 	--symbollist \
 	/Users/haroldbarros/Projects/BiaGlicMonitorXa/iOS/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/mtouch-symbols.list \
@@ -25,9 +25,23 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Microsoft.CSharp.dll \
 	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Azure.Mobile.Client.3.1.0/lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Azure.Mobile.Client.3.1.0/lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.Ext.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Azure.Mobile.Client.SQLiteStore.3.1.0/lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll \
+	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
 	-r \
 	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Newtonsoft.Json.10.0.2/lib/netstandard1.3/Newtonsoft.Json.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.bundle_green.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.bundle_green.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.core.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.core.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.provider.sqlite3.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
 	-r \
@@ -36,6 +50,10 @@
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.IO.Compression.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Net.Http.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Net.Http.2.2.29/lib/Xamarin.iOS10/System.Net.Http.Extensions.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Net.Http.2.2.29/lib/Xamarin.iOS10/System.Net.Http.Primitives.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Xml.dll \
 	-r \
@@ -317,7 +335,25 @@
 	-r \
 	/Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/bin/Debug/BiaGlicMonitorXa.dll \
 	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Azure.Mobile.Client.3.1.0/lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Azure.Mobile.Client.3.1.0/lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.Ext.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Azure.Mobile.Client.SQLiteStore.3.1.0/lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll \
+	-r \
 	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Newtonsoft.Json.10.0.2/lib/netstandard1.3/Newtonsoft.Json.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.bundle_green.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.bundle_green.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.core.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.core.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/SQLitePCLRaw.provider.sqlite3.ios_unified.1.1.5/lib/Xamarin.iOS10/SQLitePCLRaw.provider.sqlite3.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Net.Http.2.2.29/lib/Xamarin.iOS10/System.Net.Http.Extensions.dll \
+	-r \
+	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Microsoft.Net.Http.2.2.29/lib/Xamarin.iOS10/System.Net.Http.Primitives.dll \
 	-r \
 	/Users/haroldbarros/Projects/BiaGlicMonitorXa/packages/Xamarin.Forms.2.3.4.247/lib/Xamarin.iOS10/Xamarin.Forms.Core.dll \
 	-r \

@@ -12,7 +12,10 @@ namespace BiaGlicMonitorXa {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("/Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/Views/CadastroPage.xaml")]
-    public partial class CadastroPage : global::Xamarin.Forms.ContentPage {
+    public partial class CadastroPage : global::BiaGlicMonitorXa.BasePage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Button LoginButton;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private global::Xamarin.Forms.Entry CadastroEdtId;
@@ -30,13 +33,18 @@ namespace BiaGlicMonitorXa {
         private global::Xamarin.Forms.Button CadastroBtnGravar;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        private global::Xamarin.Forms.Label InfoLabel;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(CadastroPage));
+            LoginButton = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "LoginButton");
             CadastroEdtId = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Entry>(this, "CadastroEdtId");
             CadastroEdtNome = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Entry>(this, "CadastroEdtNome");
             CadastroEdtEmail = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Entry>(this, "CadastroEdtEmail");
             CadastroEdtTelefone = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Entry>(this, "CadastroEdtTelefone");
             CadastroBtnGravar = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Button>(this, "CadastroBtnGravar");
+            InfoLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName <global::Xamarin.Forms.Label>(this, "InfoLabel");
         }
     }
 }
