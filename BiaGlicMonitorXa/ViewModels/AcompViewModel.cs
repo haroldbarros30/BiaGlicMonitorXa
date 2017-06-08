@@ -1,7 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using BiaGlicMonitorXa.Models;
 using BiaGlicMonitorXa.Services;
+using Xamarin.Forms;
 
 namespace BiaGlicMonitorXa.ViewModels
 {
@@ -13,9 +15,19 @@ namespace BiaGlicMonitorXa.ViewModels
         {
 			_ApiService = ApiService;
             usuarios = new ObservableCollection<Usuario>();
+            ItemSelectedCommand = new Command(ExecuteItemSelectedCommand);
 			Title = "Acompanhamento";
            
         }
+
+        private async void ExecuteItemSelectedCommand()
+        {
+			await PushAsync<AcompDetalheViewModel>(usuarioselecionado);
+        }
+
+        public Command ItemSelectedCommand { get; }
+
+        public Usuario usuarioselecionado { get; set; }
 
 		public ObservableCollection<Usuario> usuarios { get; }
 

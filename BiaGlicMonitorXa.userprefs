@@ -2,6 +2,9 @@
   <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.Droid PreferredExecutionTarget="Android.AVD_for_Galaxy_Nexus_by_Google" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Status do BiaGlicMonitorXa">
     <Files>
+      <File FileName="BiaGlicMonitorXa/Views/AcompPage.xaml" Line="13" Column="54" />
+      <File FileName="BiaGlicMonitorXa/Views/AcompPage.xaml.cs" Line="30" Column="1" />
+      <File FileName="BiaGlicMonitorXa/ViewModels/AcompViewModel.cs" Line="25" Column="1" />
       <File FileName="Status do BiaGlicMonitorXa" />
     </Files>
   </MonoDevelop.Ide.Workbench>
