@@ -34,24 +34,70 @@ namespace BiaGlicMonitorXa.ViewModels
 		}
 
 
+
+        private bool _IsBusy;
+        public bool IsBusy
+        {
+            get { return _IsBusy; }
+            set
+            {
+                SetProperty(ref _IsBusy, value);
+            }
+        }
+
+
+
+		string _MsgInfo;
+		public string MsgInfo
+		{
+			get { return _MsgInfo; }
+			set
+			{
+				SetProperty(ref _MsgInfo, value);
+			}
+		}
+
+
         /// <summary>
         /// Executado no carregamento da BasePage
         /// </summary>
         /// <returns>The async.</returns>
 		public override async Task LoadAsync()
         {
-            var oMedicoes = await _ApiService.GetMedicaoAsync(_usuario.Id);
 
-            if (oMedicoes != null)
+			if (IsBusy)
+				return;
+
+            try
             {
-                medicoes.Clear();
-                foreach (var medicao in oMedicoes)
-                {
-                    medicoes.Add(medicao);
-                }
+                IsBusy = true;
+                MsgInfo = "Carregando mediçoes...";
+				var oMedicoes = await _ApiService.GetMedicaoAsync(_usuario.Id);
 
-                OnPropertyChanged(nameof(medicoes));
+				if (oMedicoes != null)
+				{
+					medicoes.Clear();
+					foreach (var medicao in oMedicoes)
+					{
+						medicoes.Add(medicao);
+					}
+
+					OnPropertyChanged(nameof(medicoes));
+				}
+
+                MsgInfo = "";
+
             }
+			catch (Exception ex)
+			{
+                MsgInfo = $"Erro:{ex.Message}";
+			}
+            finally
+            {
+                IsBusy = false;
+            }
+
+           
 		}
 
     }

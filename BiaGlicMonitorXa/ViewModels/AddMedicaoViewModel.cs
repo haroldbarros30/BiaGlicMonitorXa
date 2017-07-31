@@ -1,5 +1,6 @@
 ﻿using BiaGlicMonitorXa.Services;
 using Xamarin.Forms;
+using BiaGlicMonitorXa.Models;
 
 namespace BiaGlicMonitorXa.ViewModels
 {
@@ -22,7 +23,33 @@ namespace BiaGlicMonitorXa.ViewModels
 		}
 
 
-        private string _Valor;
+
+        private bool _IsBusy;
+		public bool IsBusy
+		{
+			get { return _IsBusy; }
+			set
+			{
+				SetProperty(ref _IsBusy, value);
+			}
+		}
+
+
+		
+
+
+        string _MsgInfo;
+		public string MsgInfo
+		{
+			get { return _MsgInfo; }
+			set
+			{
+				SetProperty(ref _MsgInfo, value);
+			}
+		}
+
+
+		private string _Valor;
 
 		/// <summary>
 		/// Valor medido informado pelo usuario
@@ -53,21 +80,47 @@ namespace BiaGlicMonitorXa.ViewModels
 			//tenta converter o valor
 			double.TryParse(this.Valor, out ValorConvertido);
 
-			return (ValorConvertido > 0);
+			return (!IsBusy && ValorConvertido > 0);
 		}
 
         /// <summary>
         /// Execucao do comando gravar
         /// </summary>
-		private void ExecuteGravarCommand()
+		private async void ExecuteGravarCommand()
 		{
 
-			double ValorConvertido = 0;
-			//tenta converter o valor
-			double.TryParse(this.Valor, out ValorConvertido);
+            if (IsBusy)
+                return;
 
-            //Adiciona a medicao ao usuario logado
-            _ApiService.AddMedicao(new Models.Medicao(ValorConvertido));
+            try
+            {
+                IsBusy = true;
+
+				double ValorConvertido = 0;
+				//tenta converter o valor
+				double.TryParse(this.Valor, out ValorConvertido);
+
+				Medicao oMedicao = new Medicao(ValorConvertido);
+
+                //limpa o valor
+				Valor = "";
+
+                MsgInfo = "Gravando sua taxa...";
+				//Adiciona a medicao ao usuario logado
+				await _ApiService.AddMedicao(oMedicao);
+
+				//limpa o valor adicionado
+				MsgInfo = $"Última taxa {oMedicao.Valor.ToString()} as {oMedicao.Hora}";
+
+            }
+            catch (System.Exception ex)
+            {
+                MsgInfo = $"Erro: {ex.Message}";
+            }
+            finally
+            {
+                IsBusy = false;
+            }
 		}
 
       

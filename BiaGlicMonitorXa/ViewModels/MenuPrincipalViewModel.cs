@@ -55,6 +55,9 @@ namespace BiaGlicMonitorXa.ViewModels
 
 		private async void ExecuteCadastroCommand()
 		{
+
+
+
 			await PushAsync<CadastroViewModel>();
 		}
 

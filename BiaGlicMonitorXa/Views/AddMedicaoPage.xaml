@@ -11,18 +11,19 @@
         <StackLayout
             Padding="0,20,0,0">
 
+            <Entry
+                    x:Name="AddMedicaoEdtTaxa"
+                    Placeholder="Informe a taxa atual"
+                    Text="{Binding Valor, Mode=TwoWay}"
+                    Keyboard="Numeric"/>
 
-    <Entry
-            x:Name="AddMedicaoEdtTaxa"
-            Placeholder="Informe a taxa atual"
-            Text="{Binding Valor, Mode=TwoWay}"
-            Keyboard="Numeric"/>
+           <Button
+                x:Name="AddMedicaoBtnGravar"
+                Text="Gravar"
+                Command="{Binding GravarCommand}"/>        
 
-       <Button
-            x:Name="AddMedicaoBtnGravar"
-            Text="Gravar"
-            Command="{Binding GravarCommand}"/>        
-        
+           <ActivityIndicator Color="Blue" IsRunning="{Binding IsBusy}" />
+           <Label Text="{Binding MsgInfo}"/> 
 
         </StackLayout>
             

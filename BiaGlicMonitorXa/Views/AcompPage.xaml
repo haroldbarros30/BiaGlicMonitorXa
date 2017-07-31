@@ -8,6 +8,9 @@
         <StackLayout
             Padding="0,20,0,0">
 
+            <ActivityIndicator Color="Blue" IsRunning="{Binding IsBusy}" />
+            <Label Text="{Binding MsgInfo}"/> 
+            
             <ListView x:Name="AcompRcvLista"
                     ItemsSource="{Binding usuarios}"
                     ItemSelected="Handle_ItemSelected">

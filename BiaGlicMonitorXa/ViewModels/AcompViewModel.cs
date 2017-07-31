@@ -31,28 +31,77 @@ namespace BiaGlicMonitorXa.ViewModels
 
 		public ObservableCollection<Usuario> usuarios { get; }
 
+
+
+        private bool _IsBusy;
+        public bool IsBusy
+        {
+            get { return _IsBusy; }
+            set
+            {
+                SetProperty(ref _IsBusy, value);
+            }
+        }
+
+
+
+        string _MsgInfo;
+        public string MsgInfo
+        {
+            get { return _MsgInfo; }
+            set
+            {
+                SetProperty(ref _MsgInfo, value);
+            }
+        }
+
 		/// <summary>
 		/// Executado no carregamento da BasePage
 		/// </summary>
 		/// <returns>The async.</returns>
 		public override async Task LoadAsync()
 		{
-            var oUsuarios = await _ApiService.GetUsuariosAsync();
 
-			if (oUsuarios != null)
-			{
-				usuarios.Clear();
-				foreach (var usuario in oUsuarios)
-				{
+            if (IsBusy)
+                return;
 
-                    //pega as medicoes do usuario
-                    usuario.Medicoes = await _ApiService.GetMedicaoAsync(usuario.Id);
+            try
+            {
+                IsBusy = true;
+                MsgInfo = "Carregando...";
 
-					usuarios.Add(usuario);
-				}
 
-                OnPropertyChanged(nameof(usuarios));
-			}
+                var oUsuarios = await _ApiService.GetUsuariosAsync();
+
+                if (oUsuarios != null)
+                {
+                    usuarios.Clear();
+                    foreach (var usuario in oUsuarios)
+                    {
+
+                        //pega as medicoes do usuario
+                        usuario.Medicoes = await _ApiService.GetMedicaoAsync(usuario.Id);
+
+                        usuarios.Add(usuario);
+                    }
+
+                    OnPropertyChanged(nameof(usuarios));
+                }
+
+				MsgInfo = "";
+
+            }
+            catch (Exception ex)
+            {
+				MsgInfo = $"Erro:{ex.Message}";
+            }
+            finally
+            {
+                IsBusy = false;   
+            }
+
+
+
 			
 		}
     }

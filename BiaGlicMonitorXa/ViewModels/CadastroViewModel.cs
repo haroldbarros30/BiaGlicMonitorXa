@@ -33,7 +33,7 @@ namespace BiaGlicMonitorXa
         /// <param name="arg">Argument.</param>
         private bool CanExecuteLoginFaceBookCommand(object arg)
         {
-            return true;
+            return !IsBusy;
         }
 
         /// <summary>
@@ -42,23 +42,46 @@ namespace BiaGlicMonitorXa
         /// <param name="obj">Object.</param>
         private async void ExecuteLoginFaceBookCommand(object obj)
         {
-            Boolean UsuarioLogado = await _ApiService.LoginAsync();
+			if (IsBusy)
+				return;
 
-            if (UsuarioLogado)
-            {
-                this.Info = "Bem vindo!";
-                this.Id = Settings.UserId;
-                this.Nome = Settings.UserName;
-                this.Email = Settings.UserEmail;
-                this.Foto = Settings.UserImageUrl;
+			try
+			{
+				IsBusy = true;
 
-				//grava o usuario no banco de dados do Azure
-				await _ApiService.AddUsuarioAsync(_ApiService.GetUsuarioLogado());
-            }
-            else
-            {
-                this.Info = "Falha no login, tente novamente!";
-            }           
+
+				Boolean UsuarioLogado = await _ApiService.LoginAsync();
+
+				if (UsuarioLogado)
+				{
+					this.Info = "Bem vindo!";
+					this.Id = Settings.UserId;
+					this.Nome = Settings.UserName;
+					this.Email = Settings.UserEmail;
+					this.Foto = Settings.UserImageUrl;
+
+					//grava o usuario no banco de dados do Azure
+					await _ApiService.AddUsuarioAsync(_ApiService.GetUsuarioLogado());
+				}
+				else
+				{
+					this.Info = "Falha no login, tente novamente!";
+				}
+
+			}
+			catch (Exception ex)
+			{
+				this.Info = $"Erro:{ex.Message}";
+			}
+			finally
+			{
+				IsBusy = false;
+
+			}
+
+
+
+                   
         }
 
 
@@ -82,22 +105,44 @@ namespace BiaGlicMonitorXa
 		/// <summary>
 		/// Execucao do comando gravar
 		/// </summary>
-		private void ExecuteGravarCommand()
+        private async void ExecuteGravarCommand()
 		{
-            //grava os dados do usuario logado
- 			Settings.UserId = this.Id;
-			Settings.UserName = this.Nome;
-			Settings.UserEmail = this.Email;
-			Settings.UserImageUrl = this.Foto;
-            Settings.UserPhone = this.Telefone;
+            if (IsBusy)
+                return;
 
-            //grava o usuario no banco de dados do Azure
-            _ApiService.AddUsuarioAsync(_ApiService.GetUsuarioLogado());
 
-			this.Info = "Dados de login cadastrados.";
+            try
+            {
+                IsBusy = true;
+
+
+				//grava os dados do usuario logado
+				Settings.UserId = this.Id;
+				Settings.UserName = this.Nome;
+				Settings.UserEmail = this.Email;
+				Settings.UserImageUrl = this.Foto;
+				Settings.UserPhone = this.Telefone;
+
+				//grava o usuario no banco de dados do Azure
+				await _ApiService.AddUsuarioAsync(_ApiService.GetUsuarioLogado());
+
+				this.Info = "Dados de login cadastrados.";
+
+            }
+            catch (Exception ex)
+            {
+                this.Info = $"Erro:{ex.Message}";
+            }
+            finally
+            {
+                IsBusy = false;
+
+            }
+
+
 		}
 
-		public override async Task LoadAsync()
+		public async override Task LoadAsync()
 		{
 			//preenche os dados conforme o usuario logado
             this.Id   = Settings.UserId;
@@ -173,6 +218,17 @@ namespace BiaGlicMonitorXa
 				SetProperty(ref _Foto, value);
 			}
 		}
+
+
+        private bool _IsBusy;
+        public bool IsBusy
+        {
+            get { return _IsBusy; }
+            set
+            {
+                SetProperty(ref _IsBusy, value);
+            }
+        }
 
     }
 }

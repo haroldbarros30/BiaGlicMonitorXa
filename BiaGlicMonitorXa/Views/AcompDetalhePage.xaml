@@ -13,6 +13,9 @@
                 x:Name="AcompDetalheTxtNome"
                 Text="{Binding Nome}"/>
 
+             <ActivityIndicator Color="Blue" IsRunning="{Binding IsBusy}" />
+             <Label Text="{Binding MsgInfo}"/> 
+
             <ListView x:Name="AcompDetalheRcvLista"
                     ItemsSource="{Binding medicoes}">
                 <ListView.ItemTemplate>

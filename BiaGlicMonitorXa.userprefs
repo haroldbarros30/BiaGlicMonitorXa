@@ -1,18 +1,28 @@
-﻿<Properties StartupConfiguration="{56982D22-88BB-4A64-BB7D-62FB29817C61}|Default">
-  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.Droid PreferredExecutionTarget="Android.AVD_for_Galaxy_Nexus_by_Google" />
+﻿<Properties StartupConfiguration="{2F5E5506-9A8D-476D-A7C0-0984DC524FCD}|Default">
+  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.Droid PreferredExecutionTarget="Android.192.168.56.101:5555" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Status do BiaGlicMonitorXa">
     <Files>
-      <File FileName="BiaGlicMonitorXa/Views/AcompPage.xaml" Line="13" Column="54" />
-      <File FileName="BiaGlicMonitorXa/Views/AcompPage.xaml.cs" Line="30" Column="1" />
-      <File FileName="BiaGlicMonitorXa/ViewModels/AcompViewModel.cs" Line="25" Column="1" />
       <File FileName="Status do BiaGlicMonitorXa" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BiaGlicMonitorXa" expanded="True">
+            <Node name="BiaGlicMonitorXa.Droid" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/Droid/ShowForm.cs" relfile="Droid/ShowForm.cs" line="15" column="1" />
+      <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/Droid/ShowForm.cs" relfile="Droid/ShowForm.cs" line="8" column="1" />
+      <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/Droid/GcmService.cs" relfile="Droid/GcmService.cs" line="139" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.D5575221-3428-4D3A-B9F3-4F31F72BA9E3" />
+  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.94D9D9EF-6253-4757-BF1D-216DC88DF976" />
 </Properties>

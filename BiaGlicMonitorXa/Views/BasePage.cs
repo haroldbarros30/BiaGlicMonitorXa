@@ -5,7 +5,7 @@ using Xamarin.Forms;
 namespace BiaGlicMonitorXa
 {
 	/// <summary>
-	/// Classe criada pelo pessoal do monkey nigths
+	/// Classe base para as views a ser herdada por todas as view
 	/// </summary>
 	public abstract class BasePage : ContentPage
 	{

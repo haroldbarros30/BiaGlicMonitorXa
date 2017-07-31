@@ -43,10 +43,13 @@
             Command="{Binding GravarCommand}"/>
 
 
-        <Label 
-                x:Name="InfoLabel"
-                Text="{Binding Info}"
-                HorizontalTextAlignment="Center"/>
+      
+
+        <ActivityIndicator Color="Blue" IsRunning="{Binding IsBusy}" />    
+          <Label 
+            x:Name="InfoLabel"
+            Text="{Binding Info}"
+            HorizontalTextAlignment="Center"/>
 
         <Image 
                 Source="{Binding Foto}"
