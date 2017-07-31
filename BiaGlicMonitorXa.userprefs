@@ -8,7 +8,11 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BiaGlicMonitorXa" expanded="True">
-            <Node name="BiaGlicMonitorXa.Droid" selected="True" />
+            <Node name="BiaGlicMonitorXa.Droid" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="layout" expanded="True" />
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>

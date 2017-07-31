@@ -2277,9 +2277,6 @@ namespace BiaGlicMonitorXa.Droid
 			// aapt resource value: 0x7f07002a
 			public const int bottom = 2131165226;
 			
-			// aapt resource value: 0x7f070099
-			public const int button1 = 2131165337;
-			
 			// aapt resource value: 0x7f070044
 			public const int buttonPanel = 2131165252;
 			
@@ -2652,8 +2649,8 @@ namespace BiaGlicMonitorXa.Droid
 			// aapt resource value: 0x7f070048
 			public const int title_template = 2131165256;
 			
-			// aapt resource value: 0x7f07009a
-			public const int toolbar = 2131165338;
+			// aapt resource value: 0x7f070099
+			public const int toolbar = 2131165337;
 			
 			// aapt resource value: 0x7f070032
 			public const int top = 2131165234;
@@ -2926,10 +2923,7 @@ namespace BiaGlicMonitorXa.Droid
 			public const int Tabbar = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int teste = 2130903096;
-			
-			// aapt resource value: 0x7f030039
-			public const int Toolbar = 2130903097;
+			public const int Toolbar = 2130903096;
 			
 			static Layout()
 			{
