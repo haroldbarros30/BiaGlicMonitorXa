@@ -70,8 +70,25 @@ namespace BiaGlicMonitorXa.Services
 
 
                 //guarda os dados do usuario localizado
-                Settings.UserName = identities[0].UserClaims.Find(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")).Value;
-                Settings.UserEmail = identities[0].UserClaims.Find(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")).Value;
+                try
+                {
+					Settings.UserName = identities[0].UserClaims.Find(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")).Value;
+				}
+                catch (Exception ex)
+                {
+
+                }
+
+
+                try
+                {
+					Settings.UserEmail = identities[0].UserClaims.Find(c => c.Type.Equals("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")).Value;
+
+				}
+                catch (Exception ex)
+                {
+
+                }
 
                 /* Algumas outras opcoes possiveis para recuperar dados do facebook
 
@@ -84,17 +101,47 @@ namespace BiaGlicMonitorXa.Services
 
                  */
 
-                Settings.AuthToken = user.MobileServiceAuthenticationToken;
-                Settings.UserId = user.UserId;
-                Settings.AccessToken = identities[0].AccessToken;
+                try
+                {
+                    Settings.AuthToken = user.MobileServiceAuthenticationToken;
+                }
+                catch (Exception ex)
+                {
+                    Settings.AuthToken = DateTime.Now.ToString("yyyyMMddHHmmss");
+                }
 
+                try
+                {
+                    Settings.UserId = user.UserId;
+                }
+                catch (Exception ex)
+                {
+                    Settings.UserId = DateTime.Now.ToString("yyyyMMddHHmmss");
+                }
 
-                //busca a foto do usuario
-                var requestUrl = $"https://graph.facebook.com/v2.9/me/?fields=picture.width(350).height(350)&access_token={Settings.AccessToken}";
-                var httpClient = new HttpClient();
-                var userJson = await httpClient.GetStringAsync(requestUrl);
-                var facebookProfile = JsonConvert.DeserializeObject<FacebookProfile>(userJson);
-                Settings.UserImageUrl = facebookProfile.Picture.Data.Url;
+                try
+                {
+                    Settings.AccessToken = identities[0].AccessToken;
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                try
+                {
+					//busca a foto do usuario
+					var requestUrl = $"https://graph.facebook.com/v2.9/me/?fields=picture.width(350).height(350)&access_token={Settings.AccessToken}";
+					var httpClient = new HttpClient();
+					var userJson = await httpClient.GetStringAsync(requestUrl);
+					var facebookProfile = JsonConvert.DeserializeObject<FacebookProfile>(userJson);
+					Settings.UserImageUrl = facebookProfile.Picture.Data.Url;
+                }
+                catch (Exception ex)
+                {
+
+                }
+               
 
             }
 

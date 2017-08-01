@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{2F5E5506-9A8D-476D-A7C0-0984DC524FCD}|Default">
-  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.Droid PreferredExecutionTarget="Android.192.168.56.101:5555" />
+  <MonoDevelop.Ide.ItemProperties.BiaGlicMonitorXa.Droid PreferredExecutionTarget="Android.SelectDevice" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Status do BiaGlicMonitorXa">
     <Files>
       <File FileName="Status do BiaGlicMonitorXa" />
@@ -7,23 +7,19 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="BiaGlicMonitorXa" expanded="True">
-            <Node name="BiaGlicMonitorXa.Droid" expanded="True">
-              <Node name="Resources" expanded="True">
-                <Node name="layout" expanded="True" />
-              </Node>
-            </Node>
-          </Node>
+          <Node name="BiaGlicMonitorXa" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/Droid/ShowForm.cs" relfile="Droid/ShowForm.cs" line="15" column="1" />
       <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/Droid/ShowForm.cs" relfile="Droid/ShowForm.cs" line="8" column="1" />
       <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/Droid/GcmService.cs" relfile="Droid/GcmService.cs" line="139" column="1" />
+      <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/Services/ApiService.cs" relfile="BiaGlicMonitorXa/Services/ApiService.cs" line="81" column="1" />
+      <Breakpoint file="/Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/Services/ApiService.cs" relfile="BiaGlicMonitorXa/Services/ApiService.cs" line="68" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

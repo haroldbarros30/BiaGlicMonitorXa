@@ -25,7 +25,6 @@
 /Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/bin/Debug/Microsoft.WindowsAzure.Mobile.SQLiteStore.xml
 /Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/bin/Debug/Microsoft.WindowsAzure.Mobile.xml
 /Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/obj/Debug/BiaGlicMonitorXa.csproj.App.config
-/Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/obj/Debug/BiaGlicMonitorXa.csprojResolveAssemblyReference.cache
 /Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/obj/Debug/BiaGlicMonitorXa.csproj.CoreCompileInputs.cache
 /Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/obj/Debug/BiaGlicMonitorXa.App.xaml.g.cs
 /Users/haroldbarros/Projects/BiaGlicMonitorXa/BiaGlicMonitorXa/obj/Debug/BiaGlicMonitorXa.Views.MenuPrincipalPage.xaml.g.cs
